@@ -1,10 +1,12 @@
 import React from 'react';
-import CrawlerPage from './components/CrawlerPage';
+import Crawler from './components/Crawler';
+import ShowArticles from './components/ShowArticles';
 
 function App() {
   return (
     <div className="App">
-      <CrawlerPage />
+      <Crawler />
+      <ShowArticles />
     </div>
   );
 }
