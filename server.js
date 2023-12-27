@@ -1,8 +1,14 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
 const crawlerRouter = require('./routes/api/crawler');
 const articleRouter = require('./routes/api/getArticles');
 const app = express();
+
+// DB connect
+mongoose.connect('mongodb://localhost:27017', { dbName: "Article" })
+    .then(() => console.log('Successfully connected to mongodb'))
+    .catch(e => console.error(e));
 
 app.use(express.json());
 var cors = require('cors');

@@ -2,13 +2,16 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const cheerio = require('cheerio');
+const iconv = require('iconv-lite');
 const Article = require('../../models/article');
 
 router.get('/', async (req, res) => {
   try {
     const newsUrl = 'https://news.naver.com/main/main.naver?mode=LSD&mid=shm&sid1=105';
-    const response = await axios.get(newsUrl);
-    const html = response.data;
+    const response = await axios.get(newsUrl, {
+        responseType: 'arraybuffer'
+      });
+    const html = iconv.decode(response.data, 'EUC-KR'); // 'euc-kr' >> 'utf-8'
     const $ = cheerio.load(html);
     const articles = [];
 
