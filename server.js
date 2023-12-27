@@ -6,7 +6,7 @@ const articleRouter = require('./routes/api/getArticles');
 const app = express();
 
 // DB connect
-mongoose.connect('mongodb://localhost:27017', { dbName: "Article" })
+mongoose.connect('mongodb://127.0.0.1:27017', { dbName: "Article" })
     .then(() => console.log('Successfully connected to mongodb'))
     .catch(e => console.error(e));
 
